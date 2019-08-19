@@ -3,7 +3,7 @@ const conexao = require('../conexao')
 const executaQuery = (res, query) => {
   conexao.query(query, (erro, resultados, campos) => {
     if (erro) {
-      res.json(erro)
+      res.status(400).json(erro)
     } else {
       res.json(resultados)
     }

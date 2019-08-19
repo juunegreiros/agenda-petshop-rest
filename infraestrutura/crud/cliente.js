@@ -15,7 +15,7 @@ class Cliente {
 
   adiciona(res, item) {
     const { nome, cpf } = item
-    const sql = `INSERT INTO Clientes(nome, CPF) VALUES('${nome}', '${cpf}')`
+    const sql = `INSERT INTO Clientes(nome, CPF, criado_em) VALUES('${nome}', '${cpf}', )`
 
     executaQuery(res, sql)
   }

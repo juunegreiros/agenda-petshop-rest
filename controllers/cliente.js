@@ -14,6 +14,20 @@ module.exports = app => {
   })
 
   app.post('/clientes/cliente', (req, res) => {
+    req.assert('nome',
+      'Nome eh obrigatorio').notEmpty()
+    req.assert('cpf',
+      'CPF eh obrigatorio')
+      .notEmpty()
+
+    var erros = req.validationErrors()
+
+    if (erros) {
+      console.log('Erros de validacao encontrados')
+      res.status(400).send(erros)
+      return
+    }
+  
     const cliente = req.body
 
     Clientes.adiciona(res, cliente)
