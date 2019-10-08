@@ -35,11 +35,20 @@ class Tabelas {
   }
 
   populaTabelas() {
-    const sql = `INSERT INTO Clientes (nome, cpf) VALUES ('teste', '12345678910'); INSERT INTO Pets (nome, donoId, tipo, observacoes) VALUES ('teste', 1, 'animal de teste', 'observação teste')`
+    this.insereClientes()
+    this.inserePets()
+  }
+
+  inserePets() {
+    const sql = `INSERT INTO Pets (nome, donoId, tipo, observacoes) VALUES ('teste', 1, 'animal de teste', 'observação teste')`
 
     this.criaTabela(sql)
   }
-
+  
+  insereClientes() {
+    const sql = `INSERT INTO Clientes (nome, cpf) VALUES ('teste', '12345678910')`
+    this.criaTabela(sql)
+  }
   criaTabela(sql) {
     this.conexao.query(sql, erro => {
       if(erro) {
